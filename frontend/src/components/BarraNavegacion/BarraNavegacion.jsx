@@ -148,29 +148,42 @@ const BarraNavegacion = () => {
           transition
           menuClassName="bg-secondary-100 p-4"
         >
+          {/* <MenuItem className="p-0 hover:bg-transparent">
+            <Link
+              to="/LayoutAdmin/Info"
+              className="flex items-center flex-1 px-6 py-2 text-gray-300 transition-colors rounded-lg hover:bg-secondary-900 gap-x-4"
+            >
+              <div className="flex flex-col text-sm">
+                <span className="text-xs text-gray-500">
+                  
+                  {userData && (
+                    <div>
+                      {userData.map((user, index) => (
+                        <div key={index}>
+                          {user.names ? (
+                            <p className="text-lg">{user.names}</p>
+                          ) : (
+                            <p className="text-lg">{user.email}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </span>
+              </div>
+            </Link>
+          </MenuItem> */}
           <MenuItem className="p-0 hover:bg-transparent">
             <Link
               to="/LayoutAdmin/Info"
               className="flex items-center flex-1 px-6 py-2 text-gray-300 transition-colors rounded-lg hover:bg-secondary-900 gap-x-4"
             >
-              
-
+              <img
+                src="https://img.freepik.com/vector-gratis/grupo-personas-sonrientes-felices-mirando-vista-superior-ilustracion-vector-plano-fondo-blanco_1284-78599.jpg"
+                className="object-cover w-8 h-8 rounded-full"
+              />
               <div className="flex flex-col text-sm">
-                <span className="text-xs text-gray-500">
-                {userData && (
-                  <div>
-                    {userData.map((user, index) => (
-                      <div key={index}>
-                        {user.names ? (
-                          <p className="text-lg">{user.names}</p>
-                        ) : (
-                          <p className="text-lg">{user.email}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-                </span>
+                <span className="text-sm">Perfil</span>
               </div>
             </Link>
           </MenuItem>

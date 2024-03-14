@@ -41,13 +41,13 @@ class PagesController extends Controller
 
             $pages = Pages::create($request->all());
 
-            $Bitacora = Bitacora::add("A new page was created with the id: {$pages->id}");
+            $Bitacora = Bitacora::add("Una nueva pagina fue creada con el id: {$pages->id}");
 
             if (!$Bitacora) {
-                throw new \Exception('Error creating log.');
+                throw new \Exception('Error creando el log.');
             }
 
-            return response()->json(['pages' => $pages]);
+            return response()->json(['paginas' => $pages]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -85,10 +85,10 @@ class PagesController extends Controller
             $page = Pages::findOrFail($id);
             $page->update($request->all());
 
-            $Bitacora = Bitacora::add("Page with the id {$page->id} was updated.");
+            $Bitacora = Bitacora::add("Pagina con el id: {$page->id} Fue actualizada.");
 
             if (!$Bitacora) {
-                throw new \Exception('Error creating log.');
+                throw new \Exception('Error creando el log.');
             }
 
             return response()->json($page);
@@ -108,13 +108,13 @@ class PagesController extends Controller
             $pages = Pages::findOrFail($id);
             $pages->delete();
 
-            $Bitacora = Bitacora::add("Page with the id {$id} was deleted.");
+            $Bitacora = Bitacora::add("Pagina con el id: {$id} fue eliminada.");
 
             if (!$Bitacora) {
                 throw new \Exception('Error creating log.');
             }
 
-            return response()->json(['message' => 'The page was  successfully removed']);
+            return response()->json(['message' => 'La  pagina ha sido borrada']);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

@@ -38,11 +38,7 @@ class UsersController extends Controller
             ]);
 
 
-            if (empty($request->password)) {
-                $hashedPassword = Hash::make($request->first_LastName);
-            } else {
-                $hashedPassword = Hash::make($request->password);
-            }
+            $hashedPassword = $request->filled('password') ? Hash::make($request->password) : Hash::make($request->first_LastName);
 
             $userData = $request->all();
             $userData['password'] = $hashedPassword;
@@ -60,6 +56,7 @@ class UsersController extends Controller
             return response()->json(['message' => 'Error al crear el usuario: ' . $e->getMessage()], 500);
         }
     }
+
     /**
      * Display the specified resource.
      */
@@ -103,7 +100,7 @@ class UsersController extends Controller
             $Bitacora = Bitacora::add("Usuario con el {$user->id} fue actualizado.");
 
             if (!$Bitacora) {
-                throw new \Exception('Error al creal  la bitacora', 403);
+                throw new \Exception('Error al creal el Logs', 403);
             }
 
             return response()->json($user);

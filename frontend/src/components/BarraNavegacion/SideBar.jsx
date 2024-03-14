@@ -17,10 +17,8 @@ const Sidebar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showSubmenu, setShowSubmenu] = useState(false);
   const handleLogout = () => {
-    // Elimina el token de autenticación del localStorage
     localStorage.removeItem("token");
-    // Redirige al usuario al inicio de sesión u otra página deseada
-    // Puedes usar navigate aquí si estás usando React Router
+
     window.location.href = "/";
   };
   return (
@@ -65,7 +63,7 @@ const Sidebar = () => {
                 to="/LayoutAdmin/page"
                 className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:bg-secondary-900"
               >
-                <RiCustomerService2Line className="text-[#4791ff]" /> Paginas
+                <RiCalendarTodoLine className="text-[#4791ff]" /> Paginas
               </Link>
             </li>
           </ul>

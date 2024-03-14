@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-
 export const TablaRoll = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/rolls")
@@ -22,7 +20,6 @@ export const TablaRoll = () => {
     setSearchTerm(event.target.value);
     setCurrentPage(1);
   };
-
 
   const filteredUsers = users.filter((user) => {
     return (
@@ -65,7 +62,7 @@ export const TablaRoll = () => {
               <td className="px-4 py-2 border">Status</td>
               <td className="px-4 py-2 border">Created</td>
               <td className="px-4 py-2 border">Update</td>
-              
+
               <td className="px-4 py-2 border">Delete</td>
             </tr>
           </thead>
@@ -77,7 +74,7 @@ export const TablaRoll = () => {
                 <td className="px-4 py-2 border"></td>
                 <td className="px-4 py-2 border">{user.created_at}</td>
                 <td className="px-4 py-2 border">{user.updated_at}</td>
-               
+
                 <td className="px-4 py-2 border">
                   <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                     Change

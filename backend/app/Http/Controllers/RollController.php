@@ -36,10 +36,10 @@ class RollController extends Controller
 
             $roll = Roll::create($request->all());
 
-            $bitacora = Bitacora::add("A new roll was created with the id: {$roll->id}");
+            $bitacora = Bitacora::add("Un nuevo Roll fue crado con el id: {$roll->id}");
 
             if (!$bitacora) {
-                throw new \Exception('Error creating log.');
+                throw new \Exception('Error creando el log.');
             }
 
             return response()->json(['roll' => $roll]);
@@ -80,10 +80,10 @@ class RollController extends Controller
             $roll = Roll::findOrFail($id);
             $roll->update($request->all());
 
-            $bitacora = Bitacora::add("A roll with the id {$roll->id} was updated.");
+            $bitacora = Bitacora::add("Un Roll con el id {$id} fue actualizado.");
 
             if (!$bitacora) {
-                throw new \Exception('Error creating log.');
+                throw new \Exception('Error creando el log.');
             }
 
             return response()->json($roll);
@@ -103,13 +103,13 @@ class RollController extends Controller
             $roll = Roll::findOrFail($id);
             $roll->delete();
 
-            $Bitacora = Bitacora::add("Roll with the id {$id} was deleted.");
+            $Bitacora = Bitacora::add("Roll con el id: {$id} fue eliminado.");
 
             if (!$Bitacora) {
-                throw new \Exception('Error creating log.');
+                throw new \Exception('Error creando el log.');
             }
 
-            return response()->json(['message' => 'The Roll was deleted successfully']);
+            return response()->json(['message' => 'El Roll fue eliminado correctamente']);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

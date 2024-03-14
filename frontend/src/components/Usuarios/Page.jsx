@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Tablepage } from "./TablePage";
+import { useNavigate } from "react-router-dom";
 
 const Page = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -10,6 +11,15 @@ const Page = () => {
   const [description, setDescription] = useState("");
 
   const [rolls, setRolls] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // No hay un token, redirigir al usuario a la página de inicio de sesión
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     Modal.setAppElement("#root");

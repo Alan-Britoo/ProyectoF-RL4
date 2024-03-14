@@ -59,7 +59,7 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'sesion  cerrada correctamente']);
     }
 
     /**
@@ -95,7 +95,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6',
-            /* 'names' => 'required', */
+
         ]);
 
         if ($validator->fails()) {
@@ -107,7 +107,7 @@ class AuthController extends Controller
             ['password' => Hash::make($request->password)]
         ));
 
-        $Bitacora = Bitacora::add("Usuario con el {$user->id} fue Creado.");
+        $Bitacora = Bitacora::add("Usuario con el id: {$user->id} fue Creado.");
 
         if (!$Bitacora) {
             throw new \Exception('Error creando el log.');

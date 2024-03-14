@@ -12,7 +12,7 @@ import Roll from "./components/Usuarios/Roll";
 import { Logs } from "./components/Usuarios/Logs";
 
 import Page from "./components/Usuarios/Page";
-
+import { MyProvider } from "./components/StructureOpenPage/MyContex";
 function App() {
   return (
     <>

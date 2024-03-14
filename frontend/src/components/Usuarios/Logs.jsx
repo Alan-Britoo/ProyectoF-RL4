@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Logs = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // No hay un token, redirigir al usuario a la página de inicio de sesión
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/bitacora")

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { TablaUsuarios } from "./TablaUsuarios";
+import { useNavigate } from "react-router-dom";
 
 const Usuarios = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -10,7 +11,16 @@ const Usuarios = () => {
   const [second_LastName, setSecond_LastName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [rollId, setRollId] = useState("");
-  const [rolls, setRolls] = useState([]); 
+  const [rolls, setRolls] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // No hay un token, redirigir al usuario a la página de inicio de sesión
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     Modal.setAppElement("#root");
@@ -20,7 +30,6 @@ const Usuarios = () => {
       .then((dataRoll) => setRolls(dataRoll))
       .catch((error) => console.error("Error fetching roles:", error));
   }, []);
- 
 
   const abrirModal = () => {
     setModalOpen(true);
@@ -39,7 +48,7 @@ const Usuarios = () => {
       first_LastName: first_LastName,
       second_LastName: second_LastName,
       birthday: birthday,
-      roll_id: rollId, 
+      roll_id: rollId,
     };
 
     fetch("http://127.0.0.1:8000/api/users", {
