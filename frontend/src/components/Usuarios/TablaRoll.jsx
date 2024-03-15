@@ -90,7 +90,7 @@ export const TablaRoll = () => {
           className="p-2 border border-gray-300 rounded-md w-64"
         />
         <p className="text-gray-600">
-          Page {currentPage} of {totalPages}
+          Paginas {currentPage} de {totalPages}
         </p>
       </div>
       <div className="overflow-x-auto">
@@ -98,11 +98,11 @@ export const TablaRoll = () => {
           <thead>
             <tr className="bg-gray-200">
               <td className="px-4 py-2 border">ID</td>
-              <td className="px-4 py-2 border">Name</td>
-              <td className="px-4 py-2 border">Status</td>
-              <td className="px-4 py-2 border">Created</td>
-              <td className="px-4 py-2 border">Update</td>
-              <td className="px-4 py-2 border">Delete</td>
+              <td className="px-4 py-2 border">Nombre</td>
+              <td className="px-4 py-2 border">Estado</td>
+              <td className="px-4 py-2 border">Creado</td>
+              <td className="px-4 py-2 border">Actualizado</td>
+              <td className="px-4 py-2 border">Accion</td>
             </tr>
           </thead>
           <tbody>
@@ -110,7 +110,15 @@ export const TablaRoll = () => {
               <tr key={roll.id} className="bg-white">
                 <td className="px-4 py-2 border">{roll.id}</td>
                 <td className="px-4 py-2 border">{roll.name}</td>
-                <td className="px-4 py-2 border">{roll.status}</td>
+                <td className="px-4 py-2 border ">
+                  <div
+                    className={`rounded-md flex justify-center ${
+                      roll.status === "active" ? "bg-green-200" : "bg-red-200"
+                    }`}
+                  >
+                    {roll.status}
+                  </div>
+                </td>
                 <td className="px-4 py-2 border">
                   {formatDateTime(roll.created_at)}
                 </td>
@@ -118,7 +126,7 @@ export const TablaRoll = () => {
                   {formatDateTime(roll.updated_at)}
                 </td>
 
-                <td className="px-4 py-2 border">
+                <td className="px-4 py-2 border flex justify-center">
                   <button
                     onClick={() =>
                       handleStatusChange(
@@ -128,7 +136,7 @@ export const TablaRoll = () => {
                     }
                     className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded ml-2"
                   >
-                    Change
+                    Cambiar
                   </button>
                 </td>
               </tr>
@@ -140,24 +148,24 @@ export const TablaRoll = () => {
         <button
           onClick={() => handleChangePage(currentPage - 1)}
           disabled={currentPage === 1}
-          className={`  px-4 py-2 rounded ${
+          className={`  px-4 py-2 rounded-md ${
             currentPage === 1
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-gray-200 hover:bg-gray-300"
           }`}
         >
-          Previous
+          Atras
         </button>
         <button
           onClick={() => handleChangePage(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className={`ml-4 px-4 py-2 rounded ${
+          className={`ml-4 px-4 py-2 rounded-md ${
             currentPage === totalPages
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-gray-200 hover:bg-gray-300"
           }`}
         >
-          Next
+          Siguiente
         </button>
       </div>
     </div>

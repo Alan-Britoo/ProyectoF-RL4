@@ -112,7 +112,7 @@ class UsersController extends Controller
     /**
      * Change user status.
      */
-    public function softDelete(Request $request, $id)
+    public function c_statusU(Request $request, $id)
     {
         try {
             $request->validate([

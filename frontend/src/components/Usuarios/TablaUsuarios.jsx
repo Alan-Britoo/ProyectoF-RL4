@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 export const TablaUsuarios = () => {
   const [users, setUsers] = useState([]);
@@ -19,7 +18,7 @@ export const TablaUsuarios = () => {
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
-  }, [currentPage]); // Reload user data when currentPage changes
+  }, [currentPage]);
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
@@ -109,7 +108,15 @@ export const TablaUsuarios = () => {
               <tr key={user.id} className="bg-white">
                 <td className="px-4 py-2 border">{user.id}</td>
                 <td className="px-4 py-2 border">{user.email}</td>
-                <td className="px-4 py-2 border">{user.status}</td>
+                <td className="px-4 py-2 border">
+                  <div
+                    className={`rounded-md flex justify-center ${
+                      user.status === "active" ? "bg-green-200" : "bg-red-200"
+                    }`}
+                  >
+                    {user.status}
+                  </div>
+                </td>
                 <td className="px-4 py-2 border">
                   {formatDateTime(user.created_at)}
                 </td>

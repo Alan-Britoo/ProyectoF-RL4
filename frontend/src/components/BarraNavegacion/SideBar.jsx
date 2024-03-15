@@ -24,7 +24,7 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className={`xl:h-[100vh] overflow-y-scroll fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-screen top-0 bg-[#0A0A0A] p-4 flex flex-col justify-between z-50 ${
+        className={`xl:h-[100vh]  fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-screen top-0 bg-[#0A0A0A] p-4 flex flex-col justify-between z-50 ${
           showMenu ? "left-0" : "-left-full"
         } transition-all`}
       >

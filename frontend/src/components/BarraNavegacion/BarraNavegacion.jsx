@@ -36,8 +36,8 @@ const BarraNavegacion = () => {
     <header className="flex justify-between h-[7vh] md:h-[10vh] border-b  p-8 items-center bg-white">
       <div className="flex items-center justify-between gap-8 text-white ">
         <a href="/LayoutAdmin/dashboard">
-          <button className="text-[#6b6f77] font-semibold transition-colors btn hover:text-gray-400">
-            Inicio
+          <button className="text-[#6b6f77] font-semibold transition-colors btn hover:text-gray-400 pl-4">
+            DashBoard
           </button>
         </a>
       </div>
