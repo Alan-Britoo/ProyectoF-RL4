@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
-  const [user, setUser] = useState(""); // Agregado estado de usuario
+  const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -68,6 +68,11 @@ export const Register = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                      "Por favor, ingrese una dirección de correo electrónico válida."
+                    )
+                  }
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   placeholder="Correo Electronico"
                 />

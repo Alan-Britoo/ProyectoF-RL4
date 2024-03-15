@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LayoutAdmin from "./components/BarraNavegacion/LayoutAdmin";
+import LayoutAdmin from "./components/Navegacion/LayoutAdmin";
 import "./App.css";
-import { Register } from "./components/StructureOpenPage/Register";
+import { Register } from "./components/Authentication/Register";
 import { Perfil } from "./components/Perfil/Perfil";
 
 import Info from "./components/Perfil/Info";
-import { Login } from "./components/StructureOpenPage/Login";
+import { Login } from "./components/Authentication/Login";
 import Usuarios from "./components/Usuarios/Usuarios";
 import DashBoard from "./components/Usuarios/DashBoard";
 import Roll from "./components/Usuarios/Roll";
 import { Logs } from "./components/Usuarios/Logs";
 
 import Page from "./components/Usuarios/Page";
-import { MyProvider } from "./components/StructureOpenPage/MyContex";
+import { MyProvider } from "./components/Authentication/MyContex";
 function App() {
   return (
     <>
