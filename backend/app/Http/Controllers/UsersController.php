@@ -129,10 +129,10 @@ class UsersController extends Controller
             $Bitacora = Bitacora::add("El usuario con el id: {$user->id} cambió de estado a {$statusChange}.");
 
             if (!$Bitacora) {
-                throw new \Exception('Error creating log.');
+                throw new \Exception('Error creando el log.');
             }
 
-            return response()->json(['message' => 'El estado del Usuario cambio satisfactoriamente']);
+            return response()->json(['message' => 'El estado del Usuario cambió satisfactoriamente']);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

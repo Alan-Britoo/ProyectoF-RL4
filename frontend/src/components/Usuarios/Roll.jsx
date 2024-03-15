@@ -4,10 +4,10 @@ import { TablaRoll } from "./TablaRoll";
 
 const Roll = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  
+
   const [name, setName] = useState("");
-  
-  const [rolls, setRolls] = useState([]); 
+
+  const [rolls, setRolls] = useState([]);
 
   useEffect(() => {
     Modal.setAppElement("#root");
@@ -17,7 +17,6 @@ const Roll = () => {
       .then((dataRoll) => setRolls(dataRoll))
       .catch((error) => console.error("Error fetching roles:", error));
   }, []);
- 
 
   const abrirModal = () => {
     setModalOpen(true);
@@ -31,9 +30,7 @@ const Roll = () => {
     event.preventDefault();
 
     const data = {
-      
       name: name,
-      
     };
 
     fetch("http://127.0.0.1:8000/api/rolls", {
@@ -62,7 +59,7 @@ const Roll = () => {
   return (
     <div className="w-full mx-auto">
       <div className="flex justify-between w-[79%] bg-black text-white late-300 items-center h-[70px]  rounded-[10px] px-10 my-12 absolute top-8">
-        <h2>Informacion de Usuario</h2>
+        <h2>Roles</h2>
         <button
           onClick={abrirModal}
           className="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded"
@@ -74,50 +71,48 @@ const Roll = () => {
         isOpen={modalOpen}
         onRequestClose={cerrarModal}
         className="Modal"
-        overlayClassName="Overlay"
+        style={{
+          content: {},
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+          },
+        }}
         shouldCloseOnOverlayClick={true}
       >
-        <div className="w-[410px] h-[40%] bg-gray-400 py-[10px] px-[20px] rounded absolute top-0 left-[480px] z-40">
+        <div className="w-[410px] h-[40%] bg-[#d2e8ff] my-10 py-[10px] px-[20px] rounded absolute top-0 left-[480px] z-40">
           <div className="flex items-center justify-between">
-            <h1 className="">Agregar Roll</h1>
+            <h1 className="text-black font-semibold pl-1">Agregar Roll</h1>
             <button
               onClick={cerrarModal}
-              className="bg-gray-100 hover:bg-gray-300  rounded p-[7px]"
+              className="bg-gray-100 hover:bg-red-300  rounded p-[7px]"
             >
               x
             </button>
           </div>
           <form onSubmit={handleSubmit}>
-            
-
-            <div className="my-2">
-              <label htmlFor="name" className="text-gray-600">
-              Nombre del nuevo
+            <div className="my-2 ">
+              <label htmlFor="name" className="text-gray-600 pl-2 ">
+                Nombre
               </label>
               <br />
               <input
                 type="text"
                 id="name"
                 name="name"
-                
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                placeholder="Nombre del Rol"
+                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300 mt-2"
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
 
-
-            <button
-              onClick={cerrarModal}
-              className="bg-gray-300 hover:bg-white text-gray-800 font-semibold py-2 px-4 rounded mr-4"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-            >
-              Save
-            </button>
+            <div className="my-2 flex justify-center ">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-2"
+              >
+                Guardar
+              </button>
+            </div>
           </form>
         </div>
       </Modal>

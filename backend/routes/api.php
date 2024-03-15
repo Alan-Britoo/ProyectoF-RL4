@@ -26,8 +26,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('users', UsersController::class);
-Route::put('users/{id}/status', [UsersController::class, 'c_status']);
+Route::put('users/{id}/status', [UsersController::class, 'c_statusU']);
 Route::resource('rolls', RollController::class);
+Route::put('rolls/{id}/status', [RollController::class, 'CstatusR']);
 Route::resource('pages', PagesController::class);
 Route::resource('bitacora', BitacoraController::class);
 

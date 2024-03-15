@@ -1,25 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icons } from "../Icons/Icons";
 import { useNavigate } from "react-router-dom";
-import { useMyContext } from "./MyContex";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [user, setUser] = useState("");
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/LayoutAdmin/DashBoard");
+    }
+  }, [navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Datos a enviar al backend
     const data = {
       email: email,
       password: password,
       user: user,
     };
 
-    // Solicitud POST al backend
     fetch("http://127.0.0.1:8000/api/auth/login", {
       method: "POST",
       headers: {
@@ -34,16 +40,14 @@ export const Login = () => {
         return response.json();
       })
       .then((data) => {
-        // Manejar la respuesta del backend
         console.log(data.user);
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("InfoUser", JSON.stringify(data.user));
-        // Aquí puedes hacer algo con la respuesta, como redirigir al usuario
+
         navigate("/LayoutAdmin/DashBoard");
       })
       .catch((error) => {
         console.error("There was an error!", error);
-        // Manejar errores de red o errores en el backend
       });
   };
 
@@ -75,8 +79,8 @@ export const Login = () => {
                   placeholder="Email"
                   required
                   autoComplete="off"
-                  value={email} // Aquí se enlaza el valor del input con el estado email
-                  onChange={(e) => setEmail(e.target.value)} // Aquí se actualiza el estado email cuando el usuario escribe en el input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-[90%] h-[100%] px-[10px] focus:outline-none"
                 />
               </div>
@@ -91,8 +95,8 @@ export const Login = () => {
                   name="password"
                   required
                   autoComplete="off"
-                  value={password} // Aquí se enlaza el valor del input con el estado password
-                  onChange={(e) => setPassword(e.target.value)} // Aquí se actualiza el estado password cuando el usuario escribe en el input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-[90%] h-[100%] px-[10px] focus:outline-none"
                 />
               </div>

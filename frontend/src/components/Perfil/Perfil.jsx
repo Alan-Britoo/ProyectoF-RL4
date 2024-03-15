@@ -75,30 +75,30 @@ export const Perfil = () => {
 
   return (
     <>
-      <div className=" w-[100%] pt-4 m-auto mt-8 relative ">
+      <div className=" w-[90%] m-auto my-3 relative ">
         <a
           href="/LayoutAdmin/Info"
-          className="text-sky-500 absolute left-[120px] top-0 "
+          className="text-sky-500 absolute right-[10px] top-[-20px] "
         >
           Atrás
         </a>
-        <section className="">
-          <section className="w-[80%] rounded-[12px] border-gray-400 border-[1px] mt-[10px] px-[40px] bg-white ">
-            <h2 className="text-[24px] mt-[25px]">Cambiar Informacion</h2>
 
+        <section className="w-[60%] m-auto rounded-[12px] border-gray-400 border-[1px] mt-[10px] bg-white mb-[20px]">
+          <h2 className="text-[22px] mt-[20px]">Cambiar Informacion</h2>
+          <div className="w-[80%]">
             <form onSubmit={handleSubmit}>
-              <div className="my-[15px]">
-                <label htmlFor="email" className="text-gray-800">
+              <div className="mt-[5px] w-full">
+                <label htmlFor="email" className="text-gray-800 text-sm">
                   Usuario/Correo
                 </label>
-                <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex bg ">
+
+                <div className="w-[100%] h-[33px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex bg ">
                   <input
                     type="text"
                     id="email"
                     name="email"
                     placeholder="Escriba su correo.."
-                    className="focus:outline-none w-[90%] h-[80%] px-3 bg-transparent"
+                    className="focus:outline-none w-[90%] px-2 bg-transparent  text-xs"
                     autoComplete="off"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -107,111 +107,113 @@ export const Perfil = () => {
                 </div>
               </div>
 
-              <div className="my-[15px]">
-                <label htmlFor="names" className="text-gray-800">
+              <div className="my-[8px]">
+                <label htmlFor="names" className="text-gray-800 text-sm">
                   Nombres
                 </label>
-                <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
+
+                <div className="w-[100%] h-[33px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="text"
                     id="names"
                     name="names"
-                    placeholder="Escriba su nombres.."
-                    className=" focus:outline-none w-[90%] h-[80%] px-3 bg-transparent"
+                    placeholder="Escriba sus nombres.."
+                    className=" focus:outline-none w-[90%]  px-2 bg-transparent text-xs"
                     autoComplete="off"
                     value={names}
                     onChange={(e) => setNames(e.target.value)}
                   />
-                  <br />
                 </div>
               </div>
-              <div className="my-[15px]">
-                <label htmlFor="first_LastName" className="text-gray-800">
+              <div className="my-[8px]">
+                <label
+                  htmlFor="first_LastName"
+                  className="text-gray-800 text-sm"
+                >
                   Primer Apellido
                 </label>
-                <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
+                <div className="w-[100%] h-[33px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="text"
                     id="first_LastName"
                     name="first_LastName"
                     placeholder="Escriba su primer apellido.."
-                    className=" focus:outline-none w-[90%] h-[80%] px-3 bg-transparent"
+                    className=" focus:outline-none w-[90%]  px-2 bg-transparent text-xs"
                     autoComplete="off"
                     value={first_LastName}
                     onChange={(e) => setFirst_LastName(e.target.value)}
                   />
-                  <br />
                 </div>
               </div>
-              <div className="my-[15px]">
-                <label htmlFor="second_LastName	" className="text-gray-800">
+              <div className="my-[8px]">
+                <label
+                  htmlFor="second_LastName	"
+                  className="text-gray-800 text-sm"
+                >
                   Segundo Apellido
                 </label>
-                <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
+
+                <div className="w-[100%] h-[33px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="text"
                     id="second_LastName	"
                     name="second_LastName	"
                     placeholder="Escriba su segundo apellido.."
-                    className=" focus:outline-none w-[90%] h-[80%] px-3 bg-transparent"
+                    className=" focus:outline-none w-[90%]  px-2 bg-transparent text-xs"
                     autoComplete="off"
                     value={second_LastName}
                     onChange={(e) => setSecond_LastName(e.target.value)}
                   />
-                  <br />
                 </div>
               </div>
 
-              <div className="my-[15px]">
-                <label htmlFor="birthday" className="text-gray-800">
+              <div className="my-[8px]">
+                <label htmlFor="birthday" className="text-gray-800 text-sm">
                   Fecha de Nacimiento
                 </label>
-                <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
+
+                <div className="w-[100%] h-[33px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="date"
                     id="birthday"
                     name="birthday"
                     placeholder="Escriba su fecha de nacimiento.."
-                    className=" focus:outline-none w-[90%] h-[80%] px-3 bg-transparent"
+                    className=" focus:outline-none w-[90%]  px-3 bg-transparent text-xs"
                     autoComplete="off"
                     value={birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                   />
-                  <br />
                 </div>
               </div>
 
-              <div className="my-[15px]">
-                <label htmlFor="password" className="text-gray-800">
+              <div className="my-[8px]">
+                <label htmlFor="password" className="text-gray-800 text-sm">
                   Contraseña
                 </label>
-                <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
+
+                <div className="w-[100%] h-[33px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="password"
                     id="password"
                     name="password"
                     placeholder="Escriba su contraseña.."
-                    className=" focus:outline-none w-[90%] h-[80%] px-3 bg-transparent"
+                    className=" focus:outline-none w-[90%] px-3 bg-transparent text-xs"
                     autoComplete="off"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <br />
                 </div>
               </div>
-              <button
-                type="submit"
-                className=" w-[82px] h-[38px] rounded-[8px] bg-sky-500 text-white text-[16px] mt-[15px] hover:bg-sky-400 mb-[50px]"
-              >
-                Guardar
-              </button>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className=" w-[82px] h-[38px] rounded-[8px] bg-sky-500 text-white text-[16px] mt-[15px] hover:bg-sky-400 mb-[20px]"
+                >
+                  Guardar
+                </button>
+              </div>
             </form>
-          </section>
+          </div>
         </section>
       </div>
     </>

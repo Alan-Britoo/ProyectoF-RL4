@@ -9,14 +9,11 @@ export const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Datos a enviar al backend
     const data = {
       email: email,
       password: password,
     };
 
-    // Solicitud POST al backend
     fetch("http://127.0.0.1:8000/api/auth/register", {
       method: "POST",
       headers: {
@@ -31,14 +28,12 @@ export const Register = () => {
         return response.json();
       })
       .then((data) => {
-        // Manejar la respuesta del backend
         console.log(data);
-        // Aquí puedes hacer algo con la respuesta, como redirigir al usuario
+
         navigate("/");
       })
       .catch((error) => {
         console.error("There was an error!", error);
-        // Manejar errores de red o errores en el backend
       });
   };
 
@@ -77,8 +72,8 @@ export const Register = () => {
                   required
                   autoComplete="off"
                   className="w-[90%] h-[100%] px-[10px] focus:outline-none"
-                  value={email} // Aquí se enlaza el valor del input con el estado email
-                  onChange={(e) => setEmail(e.target.value)} // Aquí se actualiza el estado email cuando el usuario escribe en el input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -93,8 +88,8 @@ export const Register = () => {
                   required
                   autoComplete="off"
                   className="w-[90%] h-[100%] px-[10px] focus:outline-none"
-                  value={password} // Aquí se enlaza el valor del input con el estado password
-                  onChange={(e) => setPassword(e.target.value)} // Aquí se actualiza el estado password cuando el usuario escribe en el input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 

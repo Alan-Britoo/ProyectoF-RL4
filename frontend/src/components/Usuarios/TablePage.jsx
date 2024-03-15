@@ -46,13 +46,13 @@ export const Tablepage = () => {
       <div className="mb-4 flex items-center justify-between">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Buscar..."
           value={searchTerm}
           onChange={handleSearch}
           className="p-2 border border-gray-300 rounded-md w-64"
         />
         <p className="text-gray-600">
-          Page {currentPage} of {totalPages}
+          Pagina {currentPage} de {totalPages}
         </p>
       </div>
       <div className="overflow-x-auto">
@@ -61,11 +61,11 @@ export const Tablepage = () => {
             <tr className="bg-gray-200">
               <td className="px-4 py-2 border">ID</td>
               <td className="px-4 py-2 border">URL</td>
-              <td className="px-4 py-2 border">Name</td>
-              <td className="px-4 py-2 border">Description</td>
-              <td className="px-4 py-2 border">Created</td>
-              <td className="px-4 py-2 border">Update</td>
-              <td className="px-4 py-2 border">Accions</td>
+              <td className="px-4 py-2 border">Nombre</td>
+              <td className="px-4 py-2 border">Descripcíon</td>
+              <td className="px-4 py-2 border">Creado</td>
+              <td className="px-4 py-2 border">Actualizado</td>
+              <td className="px-4 py-2 border">Accíon </td>
             </tr>
           </thead>
           <tbody>
@@ -80,7 +80,7 @@ export const Tablepage = () => {
 
                 <td className="px-4 py-2 border">
                   <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
-                    Delete
+                    Borrar
                   </button>
                 </td>
               </tr>
@@ -98,7 +98,7 @@ export const Tablepage = () => {
               : "bg-gray-200 hover:bg-gray-300"
           }`}
         >
-          Previous
+          Atras
         </button>
         <button
           onClick={() => handleChangePage(currentPage + 1)}
@@ -109,7 +109,7 @@ export const Tablepage = () => {
               : "bg-gray-200 hover:bg-gray-300"
           }`}
         >
-          Next
+          Siguiente
         </button>
       </div>
     </div>

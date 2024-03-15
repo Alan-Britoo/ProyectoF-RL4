@@ -114,4 +114,29 @@ class RollController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+    public function CstatusR(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'status' => 'required|in:active,inactive'
+            ]);
+
+            $newStatus = $request->input('status');
+
+            $roll = Roll::findOrFail($id);
+            $roll->status = $newStatus;
+            $roll->save();
+
+            $statusChange = ($newStatus == 'active') ? 'activated' : 'inactivated';
+            $bitacora = Bitacora::add("El Roll con el id: {$roll->id} Fue $statusChange.");
+
+            if (!$bitacora) {
+                throw new \Exception('Error creando el log.');
+            }
+
+            return response()->json(['message' => 'El estado del Rol cambió satisfactoriamente']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }

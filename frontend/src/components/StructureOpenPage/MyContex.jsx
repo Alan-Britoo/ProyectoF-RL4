@@ -3,7 +3,6 @@ import { useContext, createContext } from "react";
 
 const MyContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const MyProvider = ({ children }) => {
   const userStorage = localStorage.getItem("token");
   const userData =
@@ -30,5 +29,4 @@ export const MyProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useMyContext = () => useContext(MyContext);

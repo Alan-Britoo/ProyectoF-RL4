@@ -16,7 +16,6 @@ const Page = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      // No hay un token, redirigir al usuario a la página de inicio de sesión
       navigate("/");
     }
   }, [navigate]);
@@ -68,86 +67,89 @@ const Page = () => {
   return (
     <div className="w-full mx-auto">
       <div className="flex justify-between w-[79%] bg-black text-white late-300 items-center h-[70px]  rounded-[10px] px-10 my-12 absolute top-8">
-        <h2>Pages Information</h2>
+        <h2>Paginas</h2>
         <button
           onClick={abrirModal}
           className="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded"
         >
-          Add New Page
+          Agregar nueva pagina
         </button>
       </div>
       <Modal
         isOpen={modalOpen}
         onRequestClose={cerrarModal}
         className="Modal"
-        overlayClassName="Overlay"
+        style={{
+          content: {},
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+          },
+        }}
         shouldCloseOnOverlayClick={true}
       >
-        <div className="w-[410px] h-[375px] bg-gray-400 py-[10px] px-[20px] rounded absolute top-0 left-[480px] z-40">
+        <div className="w-[410px] h-[60%] bg-[#d2e8ff] py-[10px] px-[20px] rounded absolute top-0 left-[480px] z-40 mt-10">
           <div className="flex items-center justify-between">
-            <h1 className="text-gray-100">Add Page</h1>
+            <h1 className="text-black font-semibold ">Agregar Nueva Pagina</h1>
             <button
               onClick={cerrarModal}
-              className="bg-gray-100 hover:bg-gray-300  rounded p-[7px]"
+              className="bg-gray-100 hover:bg-red-200  rounded p-[7px]"
             >
               x
             </button>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="my-2">
-              <label htmlFor="URL" className="text-gray-600">
-                URL to the new Page
+            <div className="my-2 px-1">
+              <label htmlFor="URL" className="text-gray-600 pl-2">
+                URL
               </label>
               <br />
               <input
                 type="text"
                 id="URL"
                 name="URL"
+                placeholder="Ingrese la url de la pagina"
                 className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setURL(e.target.value)}
               />
             </div>
 
-            <div className="my-2">
-              <label htmlFor="name" className="text-gray-600">
-                Name
+            <div className="my-2 px-1">
+              <label htmlFor="name" className="text-gray-600 pl-2">
+                Nombre
               </label>
               <br />
               <input
                 type="text"
                 id="name"
                 name="name"
+                placeholder="Ingrese el nombre de la pagina"
                 className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
 
-            <div className="my-6">
-              <label htmlFor="description" className="text-gray-600">
-                Description
+            <div className="my-4 px-1">
+              <label htmlFor="description" className="text-gray-600 pl-2">
+                Descripcíon
               </label>
               <br />
               <input
                 type="text"
                 id="description"
                 name="description"
+                placeholder="Ingrese la descripcion de la pagina"
                 className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-
-            <button
-              onClick={cerrarModal}
-              className="bg-gray-300 hover:bg-white text-gray-800 font-semibold py-2 px-4 rounded mr-4"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-            >
-              Save
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+              >
+                Guardar
+              </button>
+            </div>
           </form>
         </div>
       </Modal>

@@ -88,106 +88,111 @@ const Usuarios = () => {
         isOpen={modalOpen}
         onRequestClose={cerrarModal}
         className="Modal"
-        overlayClassName="Overlay"
+        style={{
+          content: {},
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+          },
+        }}
         shouldCloseOnOverlayClick={true}
       >
-        <div className="w-[410px] h-[600px] bg-gray-400 py-[10px] px-[20px] rounded absolute top-0 left-[480px] z-40">
+        <div className="w-[35%] h-[92%] bg-[#d2e8ff] my-5 py-[10px] px-[20px] rounded absolute top-0 left-[480px] z-40">
           <div className="flex items-center justify-between">
-            <h1 className="">Agregar Usuario</h1>
+            <h1 className="text-black font-semibold">Agregar Usuario</h1>
             <button
               onClick={cerrarModal}
-              className="bg-gray-100 hover:bg-gray-300  rounded p-[7px]"
+              className="bg-gray-100 hover:bg-red-300  rounded p-[7px]"
             >
               x
             </button>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="my-2">
+            <div className="my-2 px-2">
               <label htmlFor="email" className="text-gray-600">
-                Email
+                Correo
               </label>
               <br />
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Escriba su correo electrónico.."
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                placeholder="Correo electrónico"
+                className="focus:outline-none w-full h-8 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
-            <div className="my-2">
+            <div className="my-2 px-2">
               <label htmlFor="names" className="text-gray-600">
-                Names
+                Nombres
               </label>
               <br />
               <input
                 type="text"
                 id="names"
                 name="names"
-                placeholder="Escriba su primer nombre.."
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                placeholder="Nombres"
+                className="focus:outline-none w-full h-8 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setNames(e.target.value)}
               />
             </div>
 
-            <div className="my-2">
+            <div className="my-2 px-2">
               <label htmlFor="first_LastName" className="text-gray-600">
-                First Name
+                Primer Apellido
               </label>
               <br />
               <input
                 type="text"
                 id="first_LastName"
                 name="first_LastName"
-                placeholder="Escriba su primer apellido.."
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                placeholder="Primer apellido"
+                className="focus:outline-none w-full h-8 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setFirst_LastName(e.target.value)}
               />
             </div>
 
-            <div className="my-2">
+            <div className="my-2 px-2">
               <label htmlFor="second_LastName" className="text-gray-600">
-                Second Surname
+                Segundo Apellido
               </label>
               <br />
               <input
                 type="text"
                 id="second_LastName"
                 name="second_LastName"
-                placeholder="Escriba su segundo apellido.."
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                placeholder="Segundo apellido"
+                className="focus:outline-none w-full h-8 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setSecond_LastName(e.target.value)}
               />
             </div>
 
-            <div className="my-2">
+            <div className="my-2 px-2">
               <label htmlFor="birthday" className="text-gray-600">
-                date of birth
+                Fecha de Nacimiento
               </label>
               <br />
               <input
                 type="date"
                 id="birthday"
                 name="birthday"
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                className="focus:outline-none w-full h-8 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setBirthday(e.target.value)}
               />
             </div>
-            <div className="my-2">
+            <div className="my-2 px-2">
               <label htmlFor="rollId" className="text-gray-600">
-                Roll
+                Rol
               </label>
               <br />
               <select
                 id="rollId"
                 name="rollId"
                 value={rollId}
-                className="focus:outline-none w-full h-10 px-3 border rounded-lg border-gray-300"
+                className="focus:outline-none w-full h-8 px-3 border rounded-lg border-gray-300"
                 onChange={(e) => setRollId(e.target.value)}
               >
-                <option value="">Select a roll</option>
+                <option value="">Seleccionar un roll</option>
                 {rolls.map((roll) => (
                   <option key={roll.id} value={roll.id}>
                     {roll.name}
@@ -196,24 +201,20 @@ const Usuarios = () => {
               </select>
             </div>
 
-            <p className="py-[8px]">
+            <p className="py-[8px] mx-2">
               La contraseña por defecto de cada usuario será su{" "}
               <strong>primer apellido</strong>, indicar que debe efectuar un
               cambio de contraseña individualmente en el apartado de{" "}
               <strong>Editar</strong> en <strong>My Profile</strong>
             </p>
-            <button
-              onClick={cerrarModal}
-              className="bg-gray-300 hover:bg-white text-gray-800 font-semibold py-2 px-4 rounded mr-4"
-            >
-              Close
-            </button>
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
-            >
-              Save
-            </button>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+              >
+                Guardar
+              </button>
+            </div>
           </form>
         </div>
       </Modal>
