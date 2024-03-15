@@ -10,8 +10,14 @@ export const Perfil = () => {
   const [first_LastName, setFirst_LastName] = useState("");
   const [second_LastName, setSecond_LastName] = useState("");
   const [birthday, setBirthday] = useState("");
-  const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const userDataString = localStorage.getItem("InfoUser");
@@ -24,7 +30,6 @@ export const Perfil = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Datos a enviar al backend
     const data = {
       email: email,
       password: password,
@@ -34,7 +39,6 @@ export const Perfil = () => {
       birthday: birthday,
     };
 
-    // Solicitud POST al backend
     fetch(`http://127.0.0.1:8000/api/users/${userData.id}`, {
       method: "PUT",
       headers: {
@@ -49,10 +53,8 @@ export const Perfil = () => {
         return response.json();
       })
       .then((data) => {
-        // Manejar la respuesta del backend
-        console.log(data );
+        console.log(data);
         localStorage.setItem("InfoUser", JSON.stringify(data));
-        // Aquí puedes hacer algo con la respuesta, como redirigir al usuario
 
         setEmail("");
         setPassword("");
@@ -65,35 +67,32 @@ export const Perfil = () => {
       })
       .catch((error) => {
         console.error("There was an error!", error);
-        // Manejar errores de red o errores en el backend
       });
-      <div className="hidden">
-      <Info 
-      userData1= {data}
-      
-      />
-      </div>
+    <div className="hidden">
+      <Info userData1={data} />
+    </div>;
   };
 
   return (
     <>
-      <div className=" w-[600px] pt-4 m-auto mt-12 relative ">
-        <a href="/LayoutAdmin/Info" className="text-sky-500 absolute left-9 top-0 ">
-          Back
+      <div className=" w-[100%] pt-4 m-auto mt-8 relative ">
+        <a
+          href="/LayoutAdmin/Info"
+          className="text-sky-500 absolute left-[120px] top-0 "
+        >
+          Atrás
         </a>
         <section className="">
-          <section className="w-[550px] rounded-[12px] border-gray-200 border-[1px] mt-[10px] px-[40px] ">
-            <h2 className="text-[24px] mt-[25px]">Change Info</h2>
-            {/* <p className="text-[13px] text-gray-500 pt-[7px]">
-              Changes will be reflected to every services
-            </p> */}
+          <section className="w-[80%] rounded-[12px] border-gray-400 border-[1px] mt-[10px] px-[40px] bg-white ">
+            <h2 className="text-[24px] mt-[25px]">Cambiar Informacion</h2>
+
             <form onSubmit={handleSubmit}>
               <div className="my-[15px]">
-                <label htmlFor="email" className="text-gray-600">
+                <label htmlFor="email" className="text-gray-800">
                   Usuario/Correo
                 </label>
                 <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-200 mt-[5px] items-center flex ">
+                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex bg ">
                   <input
                     type="text"
                     id="email"
@@ -109,11 +108,11 @@ export const Perfil = () => {
               </div>
 
               <div className="my-[15px]">
-                <label htmlFor="names" className="text-gray-600">
+                <label htmlFor="names" className="text-gray-800">
                   Nombres
                 </label>
                 <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-200 mt-[5px] items-center flex ">
+                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="text"
                     id="names"
@@ -128,11 +127,11 @@ export const Perfil = () => {
                 </div>
               </div>
               <div className="my-[15px]">
-                <label htmlFor="first_LastName" className="text-gray-600">
+                <label htmlFor="first_LastName" className="text-gray-800">
                   Primer Apellido
                 </label>
                 <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-200 mt-[5px] items-center flex ">
+                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="text"
                     id="first_LastName"
@@ -147,11 +146,11 @@ export const Perfil = () => {
                 </div>
               </div>
               <div className="my-[15px]">
-                <label htmlFor="second_LastName	" className="text-gray-600">
+                <label htmlFor="second_LastName	" className="text-gray-800">
                   Segundo Apellido
                 </label>
                 <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-200 mt-[5px] items-center flex ">
+                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="text"
                     id="second_LastName	"
@@ -167,11 +166,11 @@ export const Perfil = () => {
               </div>
 
               <div className="my-[15px]">
-                <label htmlFor="birthday" className="text-gray-600">
+                <label htmlFor="birthday" className="text-gray-800">
                   Fecha de Nacimiento
                 </label>
                 <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-200 mt-[5px] items-center flex ">
+                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="date"
                     id="birthday"
@@ -186,13 +185,12 @@ export const Perfil = () => {
                 </div>
               </div>
 
-
               <div className="my-[15px]">
-                <label htmlFor="password" className="text-gray-600">
+                <label htmlFor="password" className="text-gray-800">
                   Contraseña
                 </label>
                 <br />
-                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-200 mt-[5px] items-center flex ">
+                <div className="w-[400px] h-[45px] rounded-[12px] border-[1px] border-gray-400 mt-[5px] items-center flex ">
                   <input
                     type="password"
                     id="password"
@@ -210,20 +208,11 @@ export const Perfil = () => {
                 type="submit"
                 className=" w-[82px] h-[38px] rounded-[8px] bg-sky-500 text-white text-[16px] mt-[15px] hover:bg-sky-400 mb-[50px]"
               >
-                Save
+                Guardar
               </button>
             </form>
           </section>
         </section>
-        <div className="text-[14px] flex justify-between mt-[15px] text-gray-400 ">
-          <p>
-            created by{" "}
-            <a href="#" className="text-gray-600">
-              DerekMoscui
-            </a>
-          </p>
-          <p>devChallenges.io</p>
-        </div>
       </div>
     </>
   );

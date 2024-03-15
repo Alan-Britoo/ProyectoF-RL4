@@ -17,7 +17,6 @@ const Usuarios = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      // No hay un token, redirigir al usuario a la página de inicio de sesión
       navigate("/");
     }
   }, [navigate]);

@@ -30,13 +30,13 @@ const Sidebar = () => {
       >
         <div>
           <h1 className="mb-10 text-2xl font-bold text-center text-white">
-            Administrador<span className="text-4xl text-[#4791ff]">.</span>
+            Tablero<span className="text-4xl text-[#4791ff]">.</span>
           </h1>
           <ul>
             <li>
               <Link
                 to="/LayoutAdmin/Roll"
-                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:bg-secondary-900"
+                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:transform hover:scale-105"
               >
                 <LuLayoutDashboard className="text-[#4791ff]" />
                 Roles
@@ -45,7 +45,7 @@ const Sidebar = () => {
             <li>
               <Link
                 to="/LayoutAdmin/usuarios"
-                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:bg-secondary-900"
+                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:transform hover:scale-105"
               >
                 <RiLayoutGridLine className="text-[#4791ff]" /> Usuarios
               </Link>
@@ -53,7 +53,7 @@ const Sidebar = () => {
             <li>
               <Link
                 to="/LayoutAdmin/logs"
-                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:bg-secondary-900"
+                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:transform hover:scale-105"
               >
                 <RiCustomerService2Line className="text-[#4791ff]" /> Bitacora
               </Link>
@@ -61,20 +61,22 @@ const Sidebar = () => {
             <li>
               <Link
                 to="/LayoutAdmin/page"
-                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:bg-secondary-900"
+                className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:transform hover:scale-105"
               >
                 <RiCalendarTodoLine className="text-[#4791ff]" /> Paginas
               </Link>
             </li>
           </ul>
         </div>
-        <nav>
+        <nav className="m-0 p-0 ">
           <Link
             to="#"
-            onClick={handleLogout} // Llama a la función handleLogout al hacer clic en el enlace
-            className="flex items-center gap-4 px-4 py-2 text-white transition-colors rounded-lg hover:bg-secondary-900"
+            onClick={handleLogout}
+            className="flex items-center px-4 py-2 text-white transition-colors rounded-lg hover:transform hover:scale-105"
           >
-            <RiLogoutCircleRLine className="text-[#4791ff]" /> Cerrar sesión
+            <RiLogoutCircleRLine className="text-[#4791ff] text-xl " />
+
+            <span className="ml-2">Cerrar sesión</span>
           </Link>
         </nav>
       </div>

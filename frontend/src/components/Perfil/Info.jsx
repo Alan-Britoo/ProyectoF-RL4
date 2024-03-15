@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./info.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Info({data}) {
+export default function Info({ data }) {
   const [userData, setUserData] = useState(null);
-  console.log(userData)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      // No hay un token, redirigir al usuario a la página de inicio de sesión
+      navigate("/");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const userDataString = localStorage.getItem("InfoUser");
@@ -18,78 +26,73 @@ export default function Info({data}) {
 
   return (
     <>
-      <section>
+      <section className="">
         <h2 className="personalInfo">Personal info</h2>
         <p className="basicInfo">Basic info, like your name and photo</p>
       </section>
 
-      <section>
-      {userData && (
-        <table className="border">
-          
-          <thead className="border">
-            <tr>
-              <th>
-                <div>
-                  <h3 className="thProfile">Profile</h3>
-                  <p className="thSomeInfo">
-                    Some info may be visible to other people
-                  </p>
-                </div>
+      <section className="">
+        {userData && (
+          <table className="border bg-white">
+            <thead className="border border-[#4791FF] ">
+              <tr>
+                <th>
+                  <div>
+                    <h3 className="thProfile">Profile</h3>
+                    <p className="thSomeInfo">
+                      Some info may be visible to other people
+                    </p>
+                  </div>
 
-                <div className="thBtnEdit">
-                  <Link to={`/LayoutAdmin/Perfil/${userData.id}`}>
-                    Editar
-                  </Link>
-                  
-                </div>
-              </th>
-            </tr>
-          </thead>
+                  <div className="thBtnEdit">
+                    <Link to={`/LayoutAdmin/Perfil/${userData.id}`}>
+                      Editar
+                    </Link>
+                  </div>
+                </th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <table>
-              <thead className="">
-               
-                  <tr className="flex  flex-col ">
-                    <th className="justify-between border-b text-gray-400">
-                      USUARIO / CORREO{" "}
+            <tbody>
+              <table>
+                <thead className="">
+                  <tr className="flex  flex-col border-b border-l border-r  border-[#4791FF] ">
+                    <th className="justify-between border-b text-gray-500 border-[#4791FF] ">
+                      USUARIO / CORREO
                       <div className="px-[40px] text-black">
                         {userData.email}
                       </div>
                     </th>
 
-                    <th className="justify-between border-b text-gray-400">
-                      NOMBRES{" "}
+                    <th className="justify-between border-b text-gray-500 border-[#4791FF]">
+                      NOMBRES
                       <div className="px-[40px] text-black">
                         {userData.names}
                       </div>
                     </th>
-                    <th className="justify-between border-b text-gray-400">
-                      APELLIDOS{" "}
+                    <th className="justify-between border-b text-gray-500 border-[#4791FF]">
+                      APELLIDOS
                       <div className="px-[40px]  text-black">
                         {userData.first_LastName} {userData.second_LastName}
                       </div>
                     </th>
 
-                    <th className="justify-between border-b text-gray-400">
-                      FECHA NACIMIENTO{" "}
+                    <th className="justify-between border-b text-gray-500 border-[#4791FF]">
+                      FECHA NACIMIENTO
                       <div className="px-[40px]  text-black">
-                        {userData.birthday} 
+                        {userData.birthday}
                       </div>
                     </th>
 
-
-                    <th className="justify-between border-b text-gray-400">
+                    <th className="justify-between border-b text-gray-500">
                       PASSWORD{" "}
                       <div className="px-[40px] text-black">*********</div>
                     </th>
                   </tr>
-               
-              </thead>
-            </table>
-          </tbody>
-        </table>
+                </thead>
+              </table>
+            </tbody>
+          </table>
         )}
       </section>
     </>
